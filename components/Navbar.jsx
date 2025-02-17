@@ -86,26 +86,35 @@ export default function Navbar() {
                 <SheetTitle className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300">
                   SOREZAY
                 </SheetTitle>
-                <SheetClose className="text-gray-300 hover:text-amber-400 rounded-sm transition-colors">
-                  <X className="h-8 w-8" />
-                </SheetClose>
+                
               </div>
               
               <nav className="flex-1">
                 <ul className="space-y-6 text-xl">
                   <li>
+
                     <Link href="#home" className="block py-3 text-gray-300 hover:text-amber-400 transition-colors">
+                  <SheetClose>
                       Home
+                    </SheetClose>
                     </Link>
+
                   </li>
                   <li>
                     <Link href="#services" className="block py-3 text-gray-300 hover:text-amber-400 transition-colors">
+                  <SheetClose>
+
                       Services
+                  </SheetClose>
+
                     </Link>
                   </li>
                   <li>
-                    <Link href="#contact" className="block py-3 text-gray-300 hover:text-amber-400 transition-colors">
-                      Contact
+                    <Link href="#contact" className="block py-3 text-gray-300 hover:text-amber-400 transition-colors w-auto" >
+                  <SheetClose>
+                  Contact
+                  </SheetClose>
+
                     </Link>
                   </li>
                 </ul>
