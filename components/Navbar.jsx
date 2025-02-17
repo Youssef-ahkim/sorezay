@@ -8,7 +8,7 @@ import {
   SheetContent,
   SheetClose,
   SheetTitle,
-} from "@/components/ui/sheet"; // Make sure SheetTitle is imported
+} from "@/components/ui/sheet";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
@@ -36,72 +36,77 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full bg-gray-900 bg-opacity-60 backdrop-blur-lg text-white py-4 px-6 shadow-md z-50 transition-transform duration-300 ${isVisible ? 'transform translate-y-0' : 'transform -translate-y-full'
-        }`}
+      className={`fixed top-0 left-0 w-full bg-gray-900/95 backdrop-blur-xl text-white z-50 transition-all duration-500 ${
+        isVisible ? 'translate-y-0 shadow-xl' : '-translate-y-full shadow-none'
+      }`}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/">
-          <span className="text-2xl font-extrabold tracking-wide font-serif">SOREZAY</span>
+      <div className="container mx-auto flex justify-between items-center px-4 py-5">
+        <Link href="/" className="group">
+          <span className="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300 hover:from-orange-300 hover:to-amber-400 transition-all duration-500">
+            SOREZAY
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-6 text-lg font-medium font-sans">
+        <ul className="hidden md:flex space-x-8 text-lg font-medium">
           <li>
-            <Link href="#home">
-              <span className="hover:text-yellow-500 transition-colors duration-300">Home</span>
+            <Link href="#home" className="relative group px-2 py-1">
+              <span className="text-gray-300 group-hover:text-amber-300 transition-colors duration-300">
+                Home
+              </span>
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-400 group-hover:w-full transition-all duration-300" />
             </Link>
           </li>
           <li>
-            <Link href="#services">
-              <span className="hover:text-yellow-500 transition-colors duration-300">Services</span>
+            <Link href="#services" className="relative group px-2 py-1">
+              <span className="text-gray-300 group-hover:text-amber-300 transition-colors duration-300">
+                Services
+              </span>
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-400 group-hover:w-full transition-all duration-300" />
             </Link>
           </li>
           <li>
-            <Link href="#contact">
-              <span className="hover:text-yellow-500 transition-colors duration-300">Contact</span>
+            <Link href="#contact" className="relative group px-2 py-1">
+              <span className="text-gray-300 group-hover:text-amber-300 transition-colors duration-300">
+                Contact
+              </span>
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-400 group-hover:w-full transition-all duration-300" />
             </Link>
           </li>
         </ul>
 
         {/* Mobile Navigation Sheet */}
         <Sheet>
-          <SheetTrigger className="md:hidden p-2 hover:text-yellow-500 transition-colors">
-            <Menu className="h-6 w-6" />
+          <SheetTrigger className="md:hidden p-2 hover:text-amber-400 transition-colors">
+            <Menu className="h-8 w-8" />
           </SheetTrigger>
-          <SheetContent side="left" className="bg-gray-900 border-gray-700">
-            <div className="flex flex-col h-full">
-              <div className="flex justify-between items-center mb-8">
-                {/* Add SheetTitle with visually hidden text */}
-                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                <span className="text-2xl font-extrabold text-white font-serif">SOREZAY</span>
-                <SheetClose className="text-white hover:text-yellow-500">
-                  <X className="h-7 w-7" />
+          <SheetContent side="left" className="bg-gray-900/95 backdrop-blur-xl border-r border-gray-700">
+            <div className="flex flex-col h-full p-6">
+              <div className="flex justify-between items-center mb-12">
+                <SheetTitle className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300">
+                  SOREZAY
+                </SheetTitle>
+                <SheetClose className="text-gray-300 hover:text-amber-400 rounded-sm transition-colors">
+                  <X className="h-8 w-8" />
                 </SheetClose>
               </div>
-              <nav className="flex flex-col">
-                <ul className=" text-white text-lg font-medium font-sans">
+              
+              <nav className="flex-1">
+                <ul className="space-y-6 text-xl">
                   <li>
-                    <Link href="#home">
-                      <SheetClose>
-                        <span className="hover:text-yellow-500 transition-colors duration-300">Home</span>
-                      </SheetClose>
+                    <Link href="#home" className="block py-3 text-gray-300 hover:text-amber-400 transition-colors">
+                      Home
                     </Link>
                   </li>
                   <li>
-                    <Link href="#services">
-                      <SheetClose>
-                        <span className="hover:text-yellow-500 transition-colors duration-300">Services</span>
-                      </SheetClose>
+                    <Link href="#services" className="block py-3 text-gray-300 hover:text-amber-400 transition-colors">
+                      Services
                     </Link>
-
                   </li>
                   <li>
-                    <Link href="#contact">
-                      <SheetClose>
-                        <span className="hover:text-yellow-500 transition-colors duration-300">Contact</span>
-                      </SheetClose>
+                    <Link href="#contact" className="block py-3 text-gray-300 hover:text-amber-400 transition-colors">
+                      Contact
                     </Link>
-
                   </li>
                 </ul>
               </nav>
