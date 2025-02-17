@@ -148,7 +148,7 @@ export default function Services() {
         </div>
 
         {/* Top Row: 3 Cards in a Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:px-[7%]">
           {services.slice(0, 3).map((service, index) => (
             <div
               key={index}
@@ -181,7 +181,7 @@ export default function Services() {
         </div>
 
         {/* Bottom Row: 2 Cards Centered */}
-        <div className=" grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 lg:px-[15%]">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 lg:px-[20%]">
           {services.slice(3).map((service, index) => (
             <div
               key={index}
