@@ -5,19 +5,21 @@ import Navbar from "@/components/Navbar";
 export default function Home() {
   return (
     <>
-    <Navbar />
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative flex items-center justify-center h-screen text-white text-center bg-black/50">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/truck.jpg"
+            src="/truck.webp"
             alt="Truck Background"
             layout="fill"
             objectFit="cover"
+            className="object-[70%_center] md:object-center"
             quality={100}
           />
+
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
 

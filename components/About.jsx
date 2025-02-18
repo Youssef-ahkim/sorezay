@@ -57,9 +57,8 @@ export default function AboutUs() {
 
   return (
     <>
-      <Navbar />
       {/* About Us Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white text-gray-900">
+      <section id="about" className="py-20 bg-gradient-to-b from-gray-50 to-white text-gray-900">
         <div className="container mx-auto px-4 text-center max-w-4xl">
           <motion.h2
             initial="hidden"
@@ -87,7 +86,7 @@ export default function AboutUs() {
             className="mt-12"
           >
             <Image
-              src="/team.jpg"
+              src="/team.webp"
               alt="Our Team"
               width={800}
               height={450}
@@ -99,7 +98,7 @@ export default function AboutUs() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-white text-gray-900">
+      <section className="py-20 bg-white text-gray-900" id="why-us">
         <div className="container mx-auto px-4 text-center max-w-6xl">
           <motion.h2
             initial="hidden"

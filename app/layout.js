@@ -3,6 +3,7 @@ import "./globals.css";
 import Services from "@/components/Services";
 import AboutUs from "@/components/About";
 import gsap from "gsap";
+import ContactUs from "@/components/ContactUs";
 
 
 const geistSans = Geist({
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
         {children}
         <Services />
         <AboutUs />
+        <ContactUs />
 
       </body>
     </html>
