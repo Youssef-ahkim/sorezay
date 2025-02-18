@@ -30,32 +30,37 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY.current && currentScrollY > SCROLL_THRESHOLD) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
+      // Hide/show navbar based on scroll direction
+      if (Math.abs(currentScrollY - lastScrollY.current) > SCROLL_THRESHOLD) {
+        setIsVisible(currentScrollY < lastScrollY.current || currentScrollY <= SCROLL_THRESHOLD);
+        lastScrollY.current = currentScrollY;
       }
-      lastScrollY.current = currentScrollY;
 
+      // Update active section
       const sections = document.querySelectorAll('section');
-      sections.forEach((section) => {
+      for (const section of sections) {
         const sectionTop = section.offsetTop - 100;
         const sectionBottom = sectionTop + section.offsetHeight;
         if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
           setActiveSection(`#${section.id}`);
+          break; // Exit loop once the active section is found
         }
-      });
+      }
     };
 
     const throttledScroll = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(handleScroll, 100);
+      if (!timeoutId) {
+        timeoutId = requestAnimationFrame(() => {
+          handleScroll();
+          timeoutId = null;
+        });
+      }
     };
 
     window.addEventListener('scroll', throttledScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', throttledScroll);
-      clearTimeout(timeoutId);
+      if (timeoutId) cancelAnimationFrame(timeoutId);
     };
   }, []);
 
@@ -104,7 +109,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ease-out backdrop-blur-lg bg-gray-900/80 border-b border-gray-800 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-200 ease-out backdrop-blur-lg bg-gray-900/80 border-b border-gray-800 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
