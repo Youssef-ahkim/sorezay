@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 export default function Home() {
   return (
     <>
-      <Navbar />
 
       {/* Hero Section */}
       <section className="relative flex items-center justify-center h-screen text-white text-center bg-black/50">
