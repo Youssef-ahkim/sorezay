@@ -9,6 +9,14 @@ export default function ContactUs() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
+  const staggerChildren = {
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   return (
     <section id="contactUs" className="py-20 bg-gradient-to-b from-gray-50 to-white text-gray-900">
       <div className="container mx-auto px-4 max-w-4xl">
@@ -17,58 +25,20 @@ export default function ContactUs() {
           whileInView="visible"
           variants={fadeInUp}
           viewport={{ once: true }}
-          className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500 text-center"
+          className="text-5xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500 text-center"
         >
           Contact Us
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <div className="flex items-start space-x-4">
-              <FaMapMarkerAlt className="w-8 h-8 text-blue-600" />
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800">Our Office</h3>
-                <p className="text-gray-600">123 Logistics Street, Suite 456</p>
-                <p className="text-gray-600">Cityville, TX 12345</p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-4">
-              <FaPhone className="w-8 h-8 text-green-600" />
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800">Phone</h3>
-                <p className="text-gray-600">+1 (234) 567-8900</p>
-                <p className="text-gray-600">Mon - Fri, 9:00 AM - 6:00 PM</p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-4">
-              <FaEnvelope className="w-8 h-8 text-orange-600" />
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800">Email</h3>
-                <p className="text-gray-600">info@sorezay.com</p>
-                <p className="text-gray-600">support@sorezay.com</p>
-              </div>
-            </div>
-          </motion.div>
+        
 
           {/* Contact Form */}
           <motion.form
-            initial="hidden"
-            whileInView="visible"
             variants={fadeInUp}
-            viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-6 bg-white p-8 rounded-xl shadow-lg border border-gray-100"
           >
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                 Full Name
               </label>
               <input
@@ -76,12 +46,13 @@ export default function ContactUs() {
                 id="name"
                 name="name"
                 required
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                placeholder="John Doe"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                 Email Address
               </label>
               <input
@@ -89,12 +60,13 @@ export default function ContactUs() {
                 id="email"
                 name="email"
                 required
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                placeholder="johndoe@example.com"
               />
             </div>
 
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
                 Subject
               </label>
               <input
@@ -102,12 +74,13 @@ export default function ContactUs() {
                 id="subject"
                 name="subject"
                 required
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                placeholder="Inquiry about services"
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                 Message
               </label>
               <textarea
@@ -115,20 +88,20 @@ export default function ContactUs() {
                 name="message"
                 rows="4"
                 required
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                placeholder="Your message here..."
               ></textarea>
             </div>
 
             <div>
               <button
                 type="submit"
-                className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-all duration-300"
+                className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-green-500 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-green-600 transition-all duration-300 shadow-md"
               >
                 Send Message
               </button>
             </div>
           </motion.form>
-        </div>
       </div>
     </section>
   );

@@ -14,7 +14,7 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [activeSection, setActiveSection] = useState('#home');
   const lastScrollY = useRef(0);
-  const SCROLL_THRESHOLD = 100;
+  const SCROLL_THRESHOLD = 50;
 
   const navItems = [
     { label: 'Home', href: '#home' },
