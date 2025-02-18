@@ -65,7 +65,7 @@ export default function AboutUs() {
             whileInView="visible"
             variants={fadeInUp}
             viewport={{ once: true }}
-            className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500"
+            className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r gradient-text"
           >
             About Us
           </motion.h2>
@@ -105,7 +105,7 @@ export default function AboutUs() {
             whileInView="visible"
             variants={fadeInUp}
             viewport={{ once: true }}
-            className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500"
+            className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r gradient-text"
           >
             Why Choose Us?
           </motion.h2>

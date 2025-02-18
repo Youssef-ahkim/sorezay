@@ -25,7 +25,7 @@ export default function ContactUs() {
           whileInView="visible"
           variants={fadeInUp}
           viewport={{ once: true }}
-          className="text-5xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500 text-center"
+          className="text-5xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r gradient-text text-center"
         >
           Contact Us
         </motion.h2>
@@ -96,7 +96,7 @@ export default function ContactUs() {
             <div>
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-green-500 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-green-600 transition-all duration-300 shadow-md"
+                className="w-full px-6 py-3 bg-gradient-to-r  from-indigo-400 to-purple-400 hover:from-purple-400 hover:to-indigo-400 transition-all duration-300 shadow-md"
               >
                 Send Message
               </button>

@@ -117,7 +117,7 @@ export default function Services() {
       `}</style>
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500">
+          <h2 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r gradient-text">
             Our Services
           </h2>
           <p className="text-xl text-gray-600">
@@ -147,7 +147,7 @@ export default function Services() {
               <div className="p-6">
                 <div className="mb-4">
                   <service.icon
-                    className="w-12 h-12 p-2 bg-blue-600 text-white rounded-lg mb-4"
+                    className="w-12 h-12 p-2 bg-purple-400 text-white rounded-lg mb-4"
                     aria-label={service.title}
                   />
                   <h3 className="text-2xl font-bold mb-2 text-gray-800">{service.title}</h3>
@@ -180,7 +180,7 @@ export default function Services() {
               <div className="p-6">
                 <div className="mb-4">
                   <service.icon
-                    className="w-12 h-12 p-2 bg-blue-600 text-white rounded-lg mb-4"
+                    className="w-12 h-12 p-2 bg-purple-400  text-white rounded-lg mb-4"
                     aria-label={service.title}
                   />
                   <h3 className="text-2xl font-bold mb-2 text-gray-800">{service.title}</h3>

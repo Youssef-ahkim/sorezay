@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.gradient-text {
+  background-image: linear-gradient(to right, #4c51bf, #9f7aea);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }

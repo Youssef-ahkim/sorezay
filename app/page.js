@@ -29,7 +29,7 @@ export default function Home() {
           <p className="mt-4 text-lg">Moving Goods, Connecting the World</p>
           <a
             href="#contact"
-            className="mt-6 inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded-lg transition"
+            className="mt-6 inline-block bg-gradient-to-r from-indigo-400 to-purple-400 hover:from-purple-400 hover:to-indigo-400 text-black font-semibold py-3 px-6 rounded-lg transition hover:scale-110"
           >
             Contact Us
           </a>
