@@ -164,7 +164,7 @@ export default function Navbar() {
 
                   <div className="mt-auto pt-8 border-t border-gray-800">
                     <p className="text-gray-400 text-sm text-center">
-                      © 2024 Sorezay. All rights reserved.
+                      © 2025 Sorezay. All rights reserved.
                     </p>
                   </div>
                 </div>
