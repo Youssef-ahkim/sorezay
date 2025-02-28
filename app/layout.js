@@ -5,6 +5,7 @@ import AboutUs from "@/components/About";
 import gsap from "gsap";
 import ContactUs from "@/components/ContactUs";
 import Navbar from "@/components/Navbar";
+import { Analytics } from "@vercel/analytics/react"
 
 
 const geistSans = Geist({
