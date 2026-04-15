@@ -13,6 +13,7 @@ import {
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [activeSection, setActiveSection] = useState('#home');
+  const [isScrolled, setIsScrolled] = useState(false);
   const lastScrollY = useRef(0);
   const SCROLL_THRESHOLD = 50;
 
@@ -25,148 +26,91 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
-    let timeoutId;
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Hide/show navbar based on scroll direction
+      setIsScrolled(currentScrollY > 20);
+
       if (Math.abs(currentScrollY - lastScrollY.current) > SCROLL_THRESHOLD) {
         setIsVisible(currentScrollY < lastScrollY.current || currentScrollY <= SCROLL_THRESHOLD);
         lastScrollY.current = currentScrollY;
       }
 
-      // Update active section
       const sections = document.querySelectorAll('section');
       for (const section of sections) {
         const sectionTop = section.offsetTop - 100;
         const sectionBottom = sectionTop + section.offsetHeight;
         if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
           setActiveSection(`#${section.id}`);
-          break; // Exit loop once the active section is found
+          break;
         }
       }
     };
 
-    const throttledScroll = () => {
-      if (!timeoutId) {
-        timeoutId = requestAnimationFrame(() => {
-          handleScroll();
-          timeoutId = null;
-        });
-      }
-    };
-
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', throttledScroll);
-      if (timeoutId) cancelAnimationFrame(timeoutId);
-    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const DesktopNavItem = ({ item }) => (
-    <li key={item.href}>
-      <Link
-        href={item.href}
-        className="relative group px-3 py-2 transition-colors"
-        onClick={() => setActiveSection(item.href)}
-      >
-        <span
-          className={`text-lg ${
-            activeSection === item.href
-              ? 'text-indigo-400'
-              : 'text-white hover:text-indigo-300'
-          } transition-colors duration-300`}
-        >
-          {item.label}
-        </span>
-        <span
-          className={`absolute bottom-0 left-0 ${
-            activeSection === item.href ? 'w-full' : 'w-0'
-          } h-[2px] bg-indigo-400 transition-all duration-300`}
-        />
-      </Link>
-    </li>
-  );
-
-  const MobileNavItem = ({ item }) => (
-    <li>
-      <SheetClose asChild>
-        <Link
-          href={item.href}
-          className={`block py-4 px-4 text-xl rounded-lg transition-colors ${
-            activeSection === item.href
-              ? 'bg-indigo-800/50 text-indigo-400'
-              : 'text-white hover:bg-gray-800/50'
-          }`}
-          onClick={() => setActiveSection(item.href)}
-        >
-          {item.label}
-        </Link>
-      </SheetClose>
-    </li>
-  );
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-200 ease-out backdrop-blur-lg bg-gray-900/80 border-b border-gray-800 ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'
+        } ${isScrolled ? 'py-3 bg-black/40 backdrop-blur-md border-b border-white/5' : 'py-6 bg-transparent'}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link
-            href="/"
-            className="group flex items-center gap-2"
-            aria-label="Home"
-          >
-            <span className="text-2xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 group-hover:from-purple-400 group-hover:to-indigo-400 transition-all duration-500">
-              SOREZAY
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex justify-between items-center">
+          <Link href="/" className="group flex items-center gap-2">
+            <span className="text-2xl font-bold tracking-tight font-outfit">
+              <span className="text-white">SORE</span>
+              <span className="gradient-text">ZAY</span>
             </span>
           </Link>
 
-          <ul className="hidden md:flex items-center gap-6">
+          <ul className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <DesktopNavItem key={item.href} item={item} />
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`text-sm font-medium tracking-wide border-b-2 border-transparent transition-all duration-300 hover:text-white ${activeSection === item.href ? 'text-white border-indigo-500' : 'text-gray-400'
+                    }`}
+                  onClick={() => setActiveSection(item.href)}
+                >
+                  {item.label}
+                </Link>
+              </li>
             ))}
+            <li>
+              <Link
+                href="#contactUs"
+                className="ml-4 px-6 py-2.5 rounded-full bg-white text-black text-sm font-bold transition-all hover:scale-105 active:scale-95"
+              >
+                Get Started
+              </Link>
+            </li>
           </ul>
 
           <div className="md:hidden">
             <Sheet>
-              <SheetTrigger
-                className="p-2 text-white hover:text-indigo-300 transition-colors"
-                aria-label="Open navigation menu"
-              >
-                <Menu className="w-8 h-8" />
+              <SheetTrigger className="p-2 text-white" aria-label="Open menu">
+                <Menu className="w-6 h-6" />
               </SheetTrigger>
-
-              <SheetContent
-                side="left"
-                className="bg-gray-900/95 backdrop-blur-xl border-r border-gray-800 w-full max-w-xs"
-              >
-                <div className="flex flex-col h-full p-4">
-                  <div className="flex justify-between items-center mb-8">
-                    <SheetTitle className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                      SOREZAY
-                    </SheetTitle>
-                    <SheetClose className="text-white hover:text-indigo-300 transition-colors">
-                      <X className="w-8 h-8" />
-                    </SheetClose>
-                  </div>
-
-                  <nav className="flex-1">
-                    <ul className="space-y-2">
-                      {navItems.map((item) => (
-                        <MobileNavItem key={item.href} item={item} />
-                      ))}
-                    </ul>
+              <SheetContent side="right" className="bg-black/95 border-l border-white/10 w-full sm:max-w-xs">
+                <div className="flex flex-col h-full pt-12">
+                  <SheetTitle className="text-2xl font-bold mb-8 px-4 font-outfit">
+                    SOREZAY
+                  </SheetTitle>
+                  <nav className="flex-1 px-2">
+                    {navItems.map((item) => (
+                      <SheetClose asChild key={item.href}>
+                        <Link
+                          href={item.href}
+                          className={`block py-4 px-4 text-xl font-medium rounded-xl transition-all ${activeSection === item.href ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                            }`}
+                        >
+                          {item.label}
+                        </Link>
+                      </SheetClose>
+                    ))}
                   </nav>
-
-                  <div className="mt-auto pt-8 border-t border-gray-800">
-                    <p className="text-gray-400 text-sm text-center">
-                      © 2025 Sorezay. All rights reserved.
-                    </p>
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>
